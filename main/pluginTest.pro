@@ -18,8 +18,6 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
-#LIBS += -LE:/Documents/build-pluginTest-Desktop_Qt_6_2_0_MSVC2022_64bit-Debug/debug/plugin -lpluginTest_1
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
