@@ -71,13 +71,8 @@ int MainWindow::LoadDll(const QString &d)
 {
     QLibrary* dll = new QLibrary("plugin/"+d+".dll");
     if(dll->load()){
-        if(!usedll){
-            qDebug()<<"use : "<<dll->errorString();
-            return 1;
-        }else{
-            plugins.insert(d,dll);
-            return 0;
-        }
+        plugins.insert(d,dll);
+        return 0;   
     }else{
         qDebug()<<"load : "<<dll->errorString();
         return 2;
