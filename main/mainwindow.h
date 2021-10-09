@@ -3,12 +3,10 @@
 
 #include <QMainWindow>
 #include <QLibrary>
+#include <QMap>
 
 QT_BEGIN_NAMESPACE
-namespace Ui
-{
-    class MainWindow;
-}
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -18,12 +16,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
 private:
     Ui::MainWindow *ui;
 
-    //定义函数指针
-    typedef int (*UseDll)(int, int);
+    QMap<QString,QLibrary*> plugins;
+    [[nodiscard]]
+    int LoadDll(const QString&);
+
+    typedef int (*UseDll)(int,int);
     UseDll usedll;
 };
 #endif // MAINWINDOW_H
